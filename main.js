@@ -4,20 +4,8 @@ grid.id = "hello";
 document.body.appendChild(grid);
 
 let gridSize = 4;
-let gridColumns = "";
-// let gridContainer = document.querySelector(".grid-container").style["grid-template-columns"] = "1fr 1fr";
-
-for (let i = 1; i <= gridSize; i++) {
-    if (i === gridSize) {
-        gridColumns += "1fr";
-    }
-    else {
-        gridColumns += "1fr" + " ";
-    }
-}
-
+let gridColumns = Array(gridSize).fill("1fr").join(" ");
 document.querySelector(".grid-container").style["grid-template-columns"] = gridColumns;
-// gridColumns -= " "; 
 
 
 for (let i = 1; i <= gridSize ** 2; i++) {
@@ -26,18 +14,6 @@ for (let i = 1; i <= gridSize ** 2; i++) {
     newDiv.id = `item${i}`;
     grid.appendChild(newDiv);
 }
-
-// const gridStyle = document.querySelector(".grid-container");
-// const style = getComputedStyle(gridStyle);
-// style.gridTemplateColumns = "1fr 1fr 1fr 1fr";
-// gridStyle.style.setProperty("grid-template-columns", "1fr 1fr 1fr 1fr");
-// document.getElementsByClassName("grid-item").backgroundColor = "blue";
-
-
-
-// function gridStyle() {
-//     document.getElementById('hello').style["display"] = "grid";
-// } 
 
 const blocks = document.querySelectorAll('.grid-item');
 blocks.forEach((block) => {
