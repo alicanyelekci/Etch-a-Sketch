@@ -6,7 +6,12 @@ grid.className = "grid-container";
 grid.id = "hello";
 document.body.appendChild(grid);
 
-btn.addEventListener("click", generateGrid);
+generateGrid();
+
+btn.addEventListener("click", () => {
+    removeGrid(),
+    generateGrid()
+});
 
 function generateGrid() {
     gridSize = document.querySelector("input").value;
@@ -22,10 +27,15 @@ function generateGrid() {
     
     const blocks = document.querySelectorAll('.grid-item');
     blocks.forEach((block) => {
-        block.addEventListener('mouseover', () => changeColor(block.id, "black"));
+        block.addEventListener('mouseover', () => paint(block.id, "black"));
     });
 }
 
-function changeColor(id,color) {
+function removeGrid() {
+    const gridItems = document.querySelectorAll('.grid-item');
+    gridItems.forEach(item => item.remove());
+}
+
+function paint(id,color) {
     return document.querySelector(`#${id}`).style.backgroundColor = color;
 }
