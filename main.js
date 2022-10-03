@@ -36,12 +36,12 @@ btnDelete.addEventListener("click", () => {
 
 slideSize.addEventListener("input", () => {
     let gridSize = slideSize.value;
-    sizeDiv.innerHTML = `${gridSize} x ${gridSize}`;
+    sizeDiv.innerText = `${gridSize} x ${gridSize}`;
 });
 
 function generateGrid() {
     gridSize = document.querySelector(".grid-size-slider input").value;
-    sizeDiv.innerHTML = `${gridSize} x ${gridSize}`;
+    sizeDiv.innerText = `${gridSize} x ${gridSize}`;
     gridColumns = Array(parseInt(gridSize)).fill("1fr").join(" ");
     document.querySelector(".grid-container").style["grid-template-columns"] = gridColumns;
 
