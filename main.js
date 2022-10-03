@@ -1,20 +1,47 @@
 let gridColumns;
 let gridSize;
-const btn = document.querySelector("button");
+let color = "black";
+const slideSize = document.querySelector(".slider");
+const btnClear = document.getElementById('clear');
+const btnDelete = document.getElementById('delete');
+const btnBlack = document.getElementById('black-color');
+const btnPick = document.getElementById('pick-color');
 const grid = document.createElement("div");
+const sizeDiv = document.getElementById("size-label");
+
+
 grid.className = "grid-container";
-grid.id = "hello";
 document.body.appendChild(grid);
 
 generateGrid();
 
-btn.addEventListener("click", () => {
-    removeGrid(),
-    generateGrid()
+slideSize.addEventListener("click", () => removeGrid());
+
+btnClear.addEventListener("click", () => removeGrid());
+
+btnBlack.addEventListener("click", () => {
+    color = "black";
+    draw(blocks, color);
+});
+
+btnPick.addEventListener("click", () => {
+    color = document.querySelector("#colorpicker").value;
+    draw(blocks, color);
+});
+
+btnDelete.addEventListener("click", () => {
+    color = "#FEF1B7";
+    draw(blocks, color);
+});
+
+slideSize.addEventListener("input", () => {
+    let gridSize = slideSize.value;
+    sizeDiv.innerHTML = `${gridSize} x ${gridSize}`;
 });
 
 function generateGrid() {
-    gridSize = document.querySelector("input").value;
+    gridSize = document.querySelector(".grid-size-slider input").value;
+    sizeDiv.innerHTML = `${gridSize} x ${gridSize}`;
     gridColumns = Array(parseInt(gridSize)).fill("1fr").join(" ");
     document.querySelector(".grid-container").style["grid-template-columns"] = gridColumns;
 
@@ -25,15 +52,21 @@ function generateGrid() {
         grid.appendChild(newDiv);
     }
     
-    const blocks = document.querySelectorAll('.grid-item');
-    blocks.forEach((block) => {
-        block.addEventListener('mouseover', () => paint(block.id, "black"));
-    });
+    blocks = document.querySelectorAll('.grid-item');
+    draw(blocks, color);
 }
 
 function removeGrid() {
     const gridItems = document.querySelectorAll('.grid-item');
     gridItems.forEach(item => item.remove());
+    color = "black";
+    generateGrid();
+}
+
+function draw(blocks, color) {
+    blocks.forEach((block) => {
+        block.addEventListener('mouseover', () => paint(block.id, color));
+    });
 }
 
 function paint(id,color) {
