@@ -30,7 +30,7 @@ btnPick.addEventListener("click", () => {
 });
 
 btnDelete.addEventListener("click", () => {
-    color = "#FEF1B7";
+    color = "white";
     draw(blocks, color);
 });
 
@@ -42,7 +42,8 @@ slideSize.addEventListener("input", () => {
 function generateGrid() {
     gridSize = document.querySelector(".grid-size-slider input").value;
     sizeDiv.innerText = `${gridSize} x ${gridSize}`;
-    gridColumns = Array(parseInt(gridSize)).fill("1fr").join(" ");
+    // gridColumns = Array(parseInt(gridSize)).fill("1fr").join(" ");
+    gridColumns = `repeat(${gridSize}, 1fr)`
     document.querySelector(".grid-container").style["grid-template-columns"] = gridColumns;
 
     for (let i = 1; i <= gridSize ** 2; i++) {
@@ -59,7 +60,6 @@ function generateGrid() {
 function removeGrid() {
     const gridItems = document.querySelectorAll('.grid-item');
     gridItems.forEach(item => item.remove());
-    color = "black";
     generateGrid();
 }
 

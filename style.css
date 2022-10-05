@@ -1,13 +1,109 @@
 .grid-container {
     display: grid;
     gap: 0;
-    grid-template-columns: "1fr 1fr 1fr 1fr";
-    max-width: 500px;
-    max-height: 500px;
+    grid-template-columns: repeat(16, 1fr);
+    width: 400px;
+    height: 400px;
+    margin-left: 150px;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    justify-content: center;
+    border: #0A66C2 solid 7px;
+    row-gap: 0;
 }
 
 .grid-item {
-    background-color: #FEF1B7;
+    background-color: white;
     aspect-ratio: 1;
     opacity: 1;
+    row-gap: 0;
+}
+
+body {
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    height: 100vh;
+    align-content: space-between;
+}
+
+.sidebar {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    text-align: center;
+    color: #0A66C2;
+    font-weight: 700;
+    font-size: large;
+}
+
+.color-picker {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#colorpicker:hover {
+    transform: scale(1.05);
+}
+
+button {
+    align-items: center;
+    background-color: #0A66C2;
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 100px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+#colorpicker {
+    border: none;
+    width: 75px;
+    height: 75px;
+}
+
+header {
+    margin: 25px;
+    font-size: 60px;
+    font-weight: 500;
+    color: #0A66C2;
+    text-align: center;
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+}
+
+footer {
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+    height: 25px;
 }
